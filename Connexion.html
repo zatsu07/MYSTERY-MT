@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="site_capa.css">
+  <script src="site_capa.js"></script>
+  <title>Mystery'MT</title>
+</head>
+<body>
+
+  <div class="header">
+    <div class="menu-icon" onclick="toggleMenu()">
+      <div class="bar"></div>
+      <div class="bar"></div>
+      <div class="bar"></div>
+    </div>
+    <img src="logo.png" alt="Logo" class="logo">
+  </div>
+
+  <div class="menu">
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="Nous.html">Nous</a></li>
+      <li><a href="Planning.html">Planning</a></li>
+      <li><a href="Equipe.html">Equipe</a></li>
+      <li><a href="Event.html">Event</a></li>
+      <li><a href="WEI.html">WEI</a></li>
+      <li><a href="Connexion.html">Se connecter</a></li>
+    </ul>
+  </div>
+
+  <div>
+    <h2>Connexion</h2>
+    <form>
+        <div id="login-form">
+        <p>
+            <h2>
+                <label for="username">Nom d'utilisateur:</label>
+                <input type="text" id="username" name="username" required>
+            </h2>
+        </p>
+        <p>
+            <h2>
+                <label for="password">Mot de passe:</label>
+                <input type="password" id="password" name="password" required>
+            </h2>
+        </p>
+        <p>
+            <h2>
+                <button type="button" onclick="login()">Se connecter</button>
+            </h2>
+            
+        </p>
+        </div>
+        <h2>
+            <button id="logout-button" type="button" onclick="logout" style="display: none;">Se déconnecter</button>
+        </h2>
+        
+    </form>
+  </div>
+
+  <script>
+    function toggleAuthentication() {
+      var isLoggedIn = sessionStorage.getItem('isLoggedIn');
+
+      if (isLoggedIn === 'true') {
+        // L'utilisateur est connecté, affiche le bouton de déconnexion
+        document.getElementById('login-form').style.display = 'none';
+        document.getElementById('logout-button').style.display = 'block';
+      } 
+      if (isLoggedIn === 'false')  {
+        // L'utilisateur n'est pas connecté, affiche le formulaire de connexion
+        document.getElementById('login-form').style.display = 'block';
+        document.getElementById('logout-button').style.display = 'none';
+      }
+    }
+
+    function login() {
+      var username = document.getElementById('username').value;
+      var password = document.getElementById('password').value;
+
+      // Simulation de stockage de l'état de connexion dans sessionStorage
+      if (username === "jad" && password === "toutnu") {
+        sessionStorage.setItem('isLoggedIn', 'true');
+        toggleAuthentication();
+      } else {
+        alert('Nom d\'utilisateur ou mot de passe incorrect');
+      }
+    }
+
+    function logout() {
+      sessionStorage.setItem('isLoggedIn','false');
+      toggleAuthentication();
+    }
+  </script>
+
+<div class="ligne-separation"></div>
+
+<p>
+  <h2>Contact</h2>
+  <h4>Email : capa.2024.imt.nord.europe@gmail.com</h4>
+  <h4><a href="" class="lien">Instagram : mystery_mt_</a></h4>
+  <h4><a href="https://www.tiktok.com/@deadlymt" class="lien">Tiktok : mystery_mt_</a></h4>
+</p>
+  
+</body>
+</html>
